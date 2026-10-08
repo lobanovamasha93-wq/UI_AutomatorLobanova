@@ -54,6 +54,7 @@ class ChangeTextTest {
     fun testChangeText() {
         val packageName = MODEL_PACKAGE
         waitForPackage(packageName)
+        device.wait(Until.hasObject(By.res(packageName, "userInput")), TIMEOUT)
 
         device.findObject(By.res(packageName, "userInput")).text = textToSet
         device.findObject(By.res(packageName, "buttonChange")).click()
@@ -66,6 +67,7 @@ class ChangeTextTest {
     fun testChangeTextWithBlankInputKeepsOriginalText() {
         val packageName = MODEL_PACKAGE
         waitForPackage(packageName)
+        device.wait(Until.hasObject(By.res(packageName, "textToBeChanged")), TIMEOUT)
 
         val originalText = device.findObject(By.res(packageName, "textToBeChanged")).text
 
@@ -80,6 +82,7 @@ class ChangeTextTest {
     fun testOpenTextInNewActivity() {
         val packageName = MODEL_PACKAGE
         waitForPackage(packageName)
+        device.wait(Until.hasObject(By.res(packageName, "userInput")), TIMEOUT)
 
         device.findObject(By.res(packageName, "userInput")).text = textToSet
         device.findObject(By.res(packageName, "buttonActivity")).click()
